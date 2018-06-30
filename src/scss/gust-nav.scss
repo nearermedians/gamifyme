@@ -1,0 +1,19 @@
+@import 'gust-home';
+
+.brand-logo{
+	font-family:$gh;
+}
+
+#gust-head{
+	@extend %gust-block;
+}
+
+#gust-foot{
+	@extend %gust-block;
+	bottom:0;
+	position:fixed;
+}
+
+#nav-mobile{
+	padding-right:15px;
+}

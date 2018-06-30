@@ -1,0 +1,1 @@
+sass scss/%1.scss css/%1.css

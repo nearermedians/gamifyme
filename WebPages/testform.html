@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+<div id="div1">
+</div>
+</body>
+
+<script>
+window.onload = loadDoc();
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	loadProfile(this);
+    }
+  };
+  xhttp.open("GET", "XML/adrianus.xml", true);//kalo register dan login jadi, ganti jadi user yang bersnagkutan (yang melakukan login)
+  xhttp.send();
+}
+function loadProfile(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var a = xmlDoc.getElementsByTagName("fullname")[0].childNodes[0].nodeValue;
+  var u = xmlDoc.getElementsByTagName("username")[0].childNodes[0].nodeValue;
+  var para = document.createElement("h4");
+  var node = document.createTextNode(a);
+  para.appendChild(node);
+  var element = document.getElementById("div1");
+  element.appendChild(para);
+  var x = xmlDoc.getElementsByTagName("activity");
+  for(i=0; i<x.length; i++)
+  {
+  	  var w = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+  	  var y = parseInt(x[i].getElementsByTagName("tally")[0].childNodes[0].nodeValue);
+  	  var z = x[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
+  	  var para = document.createElement("h5");
+  	  var node = document.createTextNode(w);
+  	  para.appendChild(node);
+  	  var element = document.getElementById("div1");
+	    element.appendChild(para);
+  	  counterion = document.createElement("p")
+  	  edon = document.createTextNode(y);
+  	  counterion.id = "count"+i;
+  	  counterion.appendChild(edon);
+  	  para.appendChild(counterion);
+  	  //var input = document.createElement("input");
+	  //input.setAttribute("type", "hidden");
+	  //input.id = "hide"+i;
+	  //input.setAttribute("value", z);
+	  //para.appendChild(input);
+  	  var buttonpos = document.createElement('button');
+  	  buttonpos.innerHTML = '+';
+	  buttonpos.id = "buttonpos"+i;
+	  buttonpos.onclick = (function(opt,id) {
+    	return function() {
+       		document.getElementById(opt).innerHTML=parseInt(document.getElementById(opt).innerHTML)+1;
+          	var xmlhttp = new XMLHttpRequest();
+       		xmlhttp.open("GET", "updatedata.php?u=" + u + "&a="+ id+"&p="+ document.getElementById(opt).innerHTML, true);
+        	xmlhttp.send();
+          // alert(z);
+        }; 
+        })(counterion.id, z);
+  	  para.appendChild(buttonpos);
+  	  var buttonneg = document.createElement('button');
+  	  buttonneg.innerHTML = '-';
+	  buttonneg.id = "buttonpos"+i;
+	  buttonneg.onclick = (function(opt,id) {
+    	return function() {
+       		document.getElementById(opt).innerHTML=parseInt(document.getElementById(opt).innerHTML)-1;
+          	var xmlhttp = new XMLHttpRequest();
+       		xmlhttp.open("GET", "updatedata.php?u=" + u + "&a="+ id+"&p="+ document.getElementById(opt).innerHTML, true);
+        	xmlhttp.send();
+          // alert(z);
+        }; 
+        })(counterion.id, z);
+  	  para.appendChild(buttonneg);
+	  //element.appendChild(input);
+  	  element = document.getElementById("div1");
+	  element.appendChild(para);
+  }
+}
+
+</script>
+
+</html>
