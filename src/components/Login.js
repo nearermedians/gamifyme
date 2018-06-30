@@ -20,7 +20,7 @@ class Login extends React.Component{
 	}
 
 	compareCreds = (email, password) =>{
-		let url = "https://api.jsonbin.io/b/5b28ac52d0635e29d703999e/1";
+		let url = "https://api.jsonbin.io/b/5b28ac52d0635e29d703999e/2";
 		fetch(url, {
 				method:"GET",
 				headers:{
@@ -35,10 +35,12 @@ class Login extends React.Component{
 			let credible = array.filter((e) => e.email === email && e.password === password);
 			if(credible !== undefined && credible.length != 0){
 				let token = RandomString();
-				console.log(credible);
+				let bin_id = credible[0].bin_id;
 				document.cookie = "gamifyToken=" + token;
 				localStorage.setItem("gamifyUser", email);
-				localStorage.setItem("gamifyBin", credible.bin_id);
+				localStorage.setItem("gamifyBin", bin_id);
+				this.props.history.push("user");
+				//console.log(localStorage.getItem("gamifyBin"));
 			}
 		})
 	}

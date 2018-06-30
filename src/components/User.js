@@ -26,7 +26,7 @@ class User extends React.Component{
 
 	componentDidMount(){
 		let bin = localStorage.getItem("gamifyBin");
-		console.log(bin);
+		
 		this.setState({
 			categories:bin.categories
 		});
