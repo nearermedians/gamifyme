@@ -2,11 +2,10 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
-import Login from './Login';
-import User from './User';
-import {CheckAuth} from './Util';
+import Dashboard from './views/Dashboard';
+//import {CheckAuth} from '../foundations/Util';
 
-function PrivateRoute ({component: Component, authed, ...rest}) {
+/*function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
     <Route
       {...rest}
@@ -15,13 +14,13 @@ function PrivateRoute ({component: Component, authed, ...rest}) {
         : <Redirect to={{pathname: '/', state: {from: props.location}, search: '?redirect='+rest.location.pathname,}} />}
     />
   )
-}
+}*/
 
 const Routes = (props) =>(
 	<routes>
 		<Switch>
-			<Route exact path='/' component={Login} />
-			<PrivateRoute path='/user' component={User} />
+			{/*<Route exact path='/' component={Login} /*/}
+			<Route path='/' component={Dashboard} />
 		</Switch>
 	</routes>
 	)

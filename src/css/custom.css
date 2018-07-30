@@ -1,0 +1,74 @@
+#root {
+  font-family: "Quicksand", sans-serif;
+}
+
+.progress-bar {
+  color: black;
+}
+
+.tawba-activity {
+  display: flex;
+  flex-direction: column;
+}
+
+.tawba-app-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.tawba-bars {
+  background-color: #e74c3c;
+  color: white;
+  position: sticky;
+}
+
+.tawba-button-icons {
+  font-size: 12px;
+}
+
+.tawba-brands {
+  font-family: "Grand Hotel", cursive;
+}
+
+.tawba-content {
+  padding: 20px 15px !important;
+  font-size: 12px !important;
+}
+
+.tawba-footer {
+  padding: 10px !important;
+  font-size: 14px;
+}
+
+#tawba-footer-content {
+  padding: 5px;
+}
+
+.tawba-input {
+  border-style: none none outset none;
+  font-size: 12px !important;
+}
+.tawba-input:focus {
+  border-color: transparent;
+}
+
+.tawba-links {
+  color: white;
+}
+
+#tawba-title {
+  margin: 0 auto;
+}
+
+#tawba-profile-picture {
+  max-width: 100%;
+}
+
+.tawba-progress {
+  text-align: center;
+  font-size: 10px;
+}
+
+#tawba-user-profile p {
+  margin-bottom: 0.1rem;
+}

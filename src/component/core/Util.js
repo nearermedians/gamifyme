@@ -1,17 +1,12 @@
 import React from 'react';
-import {Input} from 'react-materialize';
+import {Input} from 'reactstrap';
 
 export const InputForm = (props) =>(
 	<Input
 		type={props.type}
 		name={props.name}
-		placeholder={props.placeholder}
-		label={props.label}
-		defaultValue={props.default}
-		pattern = {props.pattern}
 		onChange = {props.onChange}
-		disabled = {props.disabled}
-		required = {props.required}
+		{...props}
 	/>
 )
 
